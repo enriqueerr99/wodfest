@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Test Stripe API - WODFEST</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      background: var(--black);
+      color: var(--white);
+      padding: 20px;
+      font-family: var(--font-family);
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .test-section {
+      background: var(--dark2);
+      border: 1px solid var(--gray-dark);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .test-section h2 {
+      margin-top: 0;
+      color: var(--white);
+    }
+    .form-group {
+      margin-bottom: 16px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gray-light);
+      font-size: 0.875rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px;
+      background: var(--dark);
+      border: 1px solid var(--gray-dark);
+      border-radius: var(--radius);
+      color: var(--white);
+      font-size: 1rem;
+    }
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--blue-light);
+      box-shadow: 0 0 0 2px rgba(79, 172, 254, 0.1);
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: var(--blue-light);
+      color: var(--white);
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    .btn:hover {
+      background: #3b9eff;
+      transform: translateY(-2px);
+    }
+    .btn.danger {
+      background: var(--red);
+    }
+    .btn.danger:hover {
+      background: #ff5555;
+    }
+    .output {
+      background: var(--dark);
+      border: 1px solid var(--gray-dark);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-top: 16px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .output.success {
+      border-color: var(--green);
+      color: var(--green);
+    }
+    .output.error {
+      border-color: var(--red);
+      color: var(--red);
+    }
+    .status {
+      padding: 12px;
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .status.loading {
+      background: rgba(79, 172, 254, 0.1);
+      color: var(--blue-light);
+    }
+    .status.success {
+      background: rgba(34, 197, 94, 0.1);
+      color: var(--green);
+    }
+    .status.error {
+      background: rgba(255, 85, 85, 0.1);
+      color: var(--red);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🧪 Test Stripe API - WODFEST</h1>
+    
+    <div class="test-section">
+      <h2>1. Test básico del endpoint</h2>
+      <button class="btn" onclick="testEndpoint()">Llamar a /api/create-checkout-session</button>
+      <div id="test1-output" class="output"></div>
+    </div>
+
+    <div class="test-section">
+      <h2>2. Test con datos completos</h2>
+      <div class="form-group">
+        <label for="category">Categoría:</label>
+        <select id="category">
+          <option value="solo-competicion">Solo Competición</option>
+          <option value="competicion-alojamiento">Competición + Alojamiento</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="teamName">Nombre del equipo:</label>
+        <input type="text" id="teamName" value="Team Test" />
+      </div>
+      <div class="form-group">
+        <label for="packMultimedia">Pack Multimedia:</label>
+        <select id="packMultimedia">
+          <option value="false">No</option>
+          <option value="true">Sí</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="numCompanions">Número de acompañantes:</label>
+        <input type="number" id="numCompanions" value="0" min="0" max="3" />
+      </div>
+      <div class="form-group">
+        <label for="athleteEmail">Email del atleta:</label>
+        <input type="email" id="athleteEmail" value="test@example.com" />
+      </div>
+      <div class="form-group">
+        <label for="athleteName">Nombre del atleta:</label>
+        <input type="text" id="athleteName" value="John Doe" />
+      </div>
+      <button class="btn" onclick="testWithData()">Enviar datos a Stripe</button>
+      <div id="test2-output" class="output"></div>
+    </div>
+
+    <div class="test-section">
+      <h2>3. Console del navegador</h2>
+      <p>Abre F12 → Console para ver mensajes de debug detallados</p>
+      <button class="btn danger" onclick="clearLogs()">Limpiar logs</button>
+    </div>
+
+    <div class="test-section">
+      <h2>4. Información del sistema</h2>
+      <div id="system-info" class="output"></div>
+    </div>
+  </div>
+
+  <script>
+    // Mostrar información del sistema
+    document.addEventListener('DOMContentLoaded', () => {
+      const systemInfo = {
+        url: window.location.href,
+        userAgent: navigator.userAgent,
+        online: navigator.onLine,
+        timestamp: new Date().toISOString()
+      };
+      
+      document.getElementById('system-info').textContent = JSON.stringify(systemInfo, null, 2);
+    });
+
+    async function testEndpoint() {
+      const output = document.getElementById('test1-output');
+      output.className = 'output';
+      output.textContent = 'Cargando...';
+      
+      console.log('📡 Iniciando test del endpoint...');
+      
+      try {
+        const response = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            teamName: 'Test Team',
+            category: 'solo-competicion',
+            packMultimedia: false,
+            numCompanions: 0,
+            athleteEmail: 'test@example.com',
+            athleteName: 'Test Athlete'
+          })
+        });
+        
+        console.log('Response status:', response.status);
+        console.log('Response headers:', response.headers);
+        
+        const data = await response.json();
+        
+        console.log('Response data:', data);
+        
+        if (response.ok && data.success) {
+          output.className = 'output success';
+          output.textContent = '✅ SUCCESS!\n\n' + JSON.stringify(data, null, 2) + '\n\nStripe URL: ' + data.url;
+        } else {
+          output.className = 'output error';
+          output.textContent = '❌ ERROR:\n\n' + JSON.stringify(data, null, 2);
+        }
+      } catch (error) {
+        console.error('Fetch error:', error);
+        output.className = 'output error';
+        output.textContent = '❌ ERROR EN LA SOLICITUD:\n\n' + error.message + '\n\n' + error.stack;
+      }
+    }
+
+    async function testWithData() {
+      const output = document.getElementById('test2-output');
+      output.className = 'output';
+      output.textContent = 'Cargando...';
+      
+      const category = document.getElementById('category').value;
+      const teamName = document.getElementById('teamName').value;
+      const packMultimedia = document.getElementById('packMultimedia').value === 'true';
+      const numCompanions = parseInt(document.getElementById('numCompanions').value);
+      const athleteEmail = document.getElementById('athleteEmail').value;
+      const athleteName = document.getElementById('athleteName').value;
+      
+      console.log('📤 Enviando datos:', {
+        category, teamName, packMultimedia, numCompanions, athleteEmail, athleteName
+      });
+      
+      try {
+        const response = await fetch('/api/create-checkout-session', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            teamName, category, packMultimedia, numCompanions, athleteEmail, athleteName
+          })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok && data.success) {
+          output.className = 'output success';
+          output.textContent = '✅ SUCCESS!\n\nStripe Checkout URL:\n' + data.url + '\n\n' + JSON.stringify(data, null, 2);
+          
+          setTimeout(() => {
+            if (confirm('¿Quieres ir al checkout de Stripe?')) {
+              window.location.href = data.url;
+            }
+          }, 1000);
+        } else {
+          output.className = 'output error';
+          output.textContent = '❌ ERROR:\n\n' + JSON.stringify(data, null, 2);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        output.className = 'output error';
+        output.textContent = '❌ ERROR:\n\n' + error.message;
+      }
+    }
+
+    function clearLogs() {
+      console.clear();
+      console.log('Logs limpiados');
+    }
+  </script>
+</body>
+</html>

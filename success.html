@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Inscripción Completada! - WODFEST Salou 2026</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/inscripcion.css" />
+  <style>
+    .success-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: var(--black);
+    }
+    .success-content {
+      background: var(--dark2);
+      border: 2px solid var(--green);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 48px;
+    }
+    .success-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+    .success-subtitle {
+      font-size: 1.125rem;
+      color: var(--gray-light);
+      margin-bottom: 32px;
+    }
+    .success-details {
+      background: var(--dark);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+    .success-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      color: var(--gray-light);
+    }
+    .success-row:last-child {
+      margin-bottom: 0;
+    }
+    .success-row strong {
+      color: var(--white);
+    }
+    .success-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+    }
+    .loading-message {
+      color: var(--gray-light);
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="success-container">
+    <div class="success-content">
+      <div class="success-icon">✅</div>
+      <h1 class="success-title">¡Inscripción Completada!</h1>
+      <p class="success-subtitle">Tu pago ha sido procesado con éxito</p>
+      
+      <div class="success-details" id="registration-details">
+        <p class="loading-message">Cargando detalles de tu inscripción...</p>
+      </div>
+      
+      <div class="success-actions">
+        <a href="/" class="btn btn-primary">Volver al inicio</a>
+      </div>
+      
+      <p style="margin-top: 32px; color: var(--gray-light); font-size: 0.875rem;">
+        Recibirás un email de confirmación con todos los detalles de tu inscripción.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Recuperar datos de la inscripción del localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+      const registrationData = localStorage.getItem('wodfest_registration_data');
+      const detailsContainer = document.getElementById('registration-details');
+      
+      if (registrationData) {
+        const data = JSON.parse(registrationData);
+        
+        let detailsHTML = '';
+        
+        // Equipo
+        detailsHTML += `
+          <div class="success-row">
+            <span>Equipo</span>
+            <strong>${data.teamName || '-'}</strong>
+          </div>
+        `;
+        
+        // Modalidad
+        const categoryName = data.category === 'solo-competicion' ? 
+          'Solo Competición' : 'Competición + Camping';
+        detailsHTML += `
+          <div class="success-row">
+            <span>Modalidad</span>
+            <strong>${categoryName}</strong>
+          </div>
+        `;
+        
+        // Atletas
+        if (data.athletes && data.athletes.length > 0) {
+          detailsHTML += `
+            <div class="success-row">
+              <span>Atletas</span>
+              <strong>${data.athletes.map(a => `${a.name} ${a.surname}`).join(', ')}</strong>
+            </div>
+          `;
+        }
+        
+        // Acompañantes
+        if (data.numCompanions > 0 && data.companions) {
+          detailsHTML += `
+            <div class="success-row">
+              <span>Acompañantes</span>
+              <strong>${data.numCompanions} persona${data.numCompanions > 1 ? 's' : ''}</strong>
+            </div>
+          `;
+        }
+        
+        // Pack Multimedia
+        if (data.packMultimedia) {
+          detailsHTML += `
+            <div class="success-row">
+              <span>Pack Multimedia</span>
+              <strong>✓ Incluido</strong>
+            </div>
+          `;
+        }
+        
+        detailsContainer.innerHTML = detailsHTML;
+        
+        // Limpiar localStorage (opcional)
+        // localStorage.removeItem('wodfest_registration_data');
+      } else {
+        detailsContainer.innerHTML = `
+          <p style="text-align: center; color: var(--gray-light);">
+            No se encontraron detalles de la inscripción.
+          </p>
+        `;
+      }
+      
+      // Verificar parámetros de la URL (session_id de Stripe)
+      const urlParams = new URLSearchParams(window.location.search);
+      const sessionId = urlParams.get('session_id');
+      
+      if (sessionId) {
+        console.log('Stripe session ID:', sessionId);
+        // Aquí podrías hacer una llamada a tu backend para verificar el pago
+      }
+    });
+  </script>
+</body>
+</html>

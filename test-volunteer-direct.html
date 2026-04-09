@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Voluntarios - Debug Directo</title>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+        .test-btn { background: #3b82f6; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; }
+        .test-btn:hover { background: #2563eb; }
+        pre { background: #f3f4f6; padding: 15px; border-radius: 5px; overflow-x: auto; white-space: pre-wrap; }
+        .success { color: #22c55e; }
+        .error { color: #ef4444; }
+        h2 { margin-top: 30px; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Debug de Voluntarios - WODFEST</h1>
+    
+    <h2>1. Test API Local</h2>
+    <button class="test-btn" onclick="testAPI()">Test /api/volunteer</button>
+    <pre id="api-response"></pre>
+    
+    <h2>2. Test Supabase Directo</h2>
+    <button class="test-btn" onclick="testSupabase()">Test Conexión Supabase</button>
+    <pre id="supabase-response"></pre>
+    
+    <h2>3. Ver Variables</h2>
+    <button class="test-btn" onclick="checkVariables()">Ver Configuración</button>
+    <pre id="vars-response"></pre>
+
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm'
+        
+        // Configuración de Supabase
+        const SUPABASE_URL = 'https://coopmsgaulridgjqfxwj.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNvb3Btc2dhdWxyaWRnanFmeHdqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM5MTU2MTYsImV4cCI6MjA4OTQ5MTYxNn0.jJweIORM5e3OEu_OoXz0T0QiaI9cemS8iYUWQlUE2Hk';
+        
+        window.supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        
+        // Test API
+        window.testAPI = async function() {
+            const resp = document.getElementById('api-response');
+            resp.textContent = 'Enviando petición...';
+            
+            try {
+                const testData = {
+                    name: 'Test Debug ' + new Date().toISOString(),
+                    email: 'debug' + Date.now() + '@test.com',
+                    phone: '666123456',
+                    age: 25,
+                    city: 'Test City',
+                    tshirt_size: 'L',
+                    availability: 'Todos los días',
+                    experience: 'Test',
+                    comments: 'Debug test'
+                };
+                
+                const response = await fetch('/api/volunteer', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(testData)
+                });
+                
+                const result = await response.json();
+                
+                resp.innerHTML = `<span class="${response.ok ? 'success' : 'error'}">Status: ${response.status}</span>\n\n` +
+                    'Enviado:\n' + JSON.stringify(testData, null, 2) + '\n\n' +
+                    'Respuesta:\n' + JSON.stringify(result, null, 2);
+                
+                // Esperar un segundo y verificar en Supabase
+                setTimeout(async () => {
+                    const { data, error } = await window.supabase
+                        .from('volunteers')
+                        .select('*')
+                        .order('created_at', { ascending: false })
+                        .limit(1);
+                    
+                    resp.innerHTML += '\n\n<span class="success">Verificación en Supabase:</span>\n';
+                    if (error) {
+                        resp.innerHTML += '<span class="error">Error: ' + JSON.stringify(error) + '</span>';
+                    } else {
+                        resp.innerHTML += 'Último voluntario:\n' + JSON.stringify(data[0], null, 2);
+                    }
+                }, 1000);
+                
+            } catch (error) {
+                resp.innerHTML = '<span class="error">Error: ' + error.message + '</span>';
+            }
+        };
+        
+        // Test Supabase
+        window.testSupabase = async function() {
+            const resp = document.getElementById('supabase-response');
+            resp.textContent = 'Conectando con Supabase...';
+            
+            try {
+                // 1. Verificar RLS
+                const { data: tables } = await window.supabase.rpc('get_tables', {});
+                
+                resp.innerHTML = '<span class="success">✅ Conexión exitosa</span>\n\n';
+                
+                // 2. Intentar insertar directamente
+                const testVolunteer = {
+                    name: 'Supabase Test ' + Date.now(),
+                    email: 'supabase' + Date.now() + '@test.com',
+                    phone: '777888999',
+                    age: 30,
+                    city: 'Supabase City',
+                    tshirt_size: 'M',
+                    availability: 'Test directo',
+                    experience: 'Testing',
+                    comments: 'Insertado directamente desde el navegador',
+                    status: 'pending'
+                };
+                
+                resp.innerHTML += 'Intentando insertar:\n' + JSON.stringify(testVolunteer, null, 2) + '\n\n';
+                
+                const { data, error } = await window.supabase
+                    .from('volunteers')
+                    .insert([testVolunteer])
+                    .select();
+                
+                if (error) {
+                    resp.innerHTML += '<span class="error">❌ Error al insertar:\n' + JSON.stringify(error, null, 2) + '</span>';
+                } else {
+                    resp.innerHTML += '<span class="success">✅ Insertado correctamente:\n' + JSON.stringify(data, null, 2) + '</span>';
+                }
+                
+                // 3. Ver últimos registros
+                const { data: volunteers, error: fetchError } = await window.supabase
+                    .from('volunteers')
+                    .select('*')
+                    .order('created_at', { ascending: false })
+                    .limit(3);
+                
+                resp.innerHTML += '\n\n<strong>Últimos 3 voluntarios:</strong>\n';
+                if (fetchError) {
+                    resp.innerHTML += '<span class="error">Error: ' + JSON.stringify(fetchError) + '</span>';
+                } else {
+                    resp.innerHTML += JSON.stringify(volunteers, null, 2);
+                }
+                
+            } catch (error) {
+                resp.innerHTML = '<span class="error">Error: ' + error.message + '</span>';
+            }
+        };
+        
+        // Check variables
+        window.checkVariables = function() {
+            const resp = document.getElementById('vars-response');
+            resp.innerHTML = '<strong>Configuración actual:</strong>\n\n' +
+                'SUPABASE_URL: ' + SUPABASE_URL + '\n' +
+                'ANON_KEY: ' + SUPABASE_ANON_KEY.substring(0, 50) + '...\n\n' +
+                'window.location.origin: ' + window.location.origin + '\n' +
+                'API endpoint: ' + window.location.origin + '/api/volunteer';
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin - WODFEST Salou 2026</title>
+  <link rel="stylesheet" href="/css/admin.css">
+  <link rel="icon" type="image/png" href="/assets/favicon.png">
+</head>
+<body>
+  <div id="app">
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="auth-container">
+      <div class="auth-card">
+        <div class="auth-header">
+          <img src="/assets/logo.svg" alt="WODFEST" class="auth-logo">
+          <h1>Panel de Administración</h1>
+          <p>WODFEST Salou 2026</p>
+        </div>
+        
+        <form id="login-form" class="auth-form">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-input" required placeholder="info@wodfestevent.com">
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" class="form-input" required placeholder="••••••••">
+          </div>
+          
+          <div class="error-message" id="login-error" style="display: none;"></div>
+          
+          <button type="submit" class="btn btn-primary btn-full">
+            <span id="login-text">Iniciar Sesión</span>
+            <span id="login-loading" style="display: none;">Iniciando...</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- ADMIN PANEL -->
+    <div id="admin-panel" style="display: none;">
+      <!-- HEADER -->
+      <header class="admin-header">
+        <div class="header-content">
+          <div class="header-left">
+            <h1>WODFEST Admin</h1>
+            <span class="header-badge">2026</span>
+          </div>
+          <div class="header-right">
+            <span class="user-name" id="user-name">Admin</span>
+            <button class="btn btn-ghost btn-sm" onclick="logout()">Cerrar Sesión</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- NAVIGATION -->
+      <nav class="admin-nav">
+        <button class="nav-item active" data-tab="dashboard">
+          <span class="nav-icon">📊</span> Dashboard
+        </button>
+        <button class="nav-item" data-tab="registrations">
+          <span class="nav-icon">🏋️</span> Inscripciones
+        </button>
+        <button class="nav-item" data-tab="volunteers">
+          <span class="nav-icon">👥</span> Voluntarios
+        </button>
+        <button class="nav-item" data-tab="settings">
+          <span class="nav-icon">⚙️</span> Configuración
+        </button>
+      </nav>
+
+      <!-- CONTENT -->
+      <main class="admin-content">
+        <!-- DASHBOARD TAB -->
+        <div id="dashboard-tab" class="tab-content active">
+          <h2>Dashboard</h2>
+          
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-content">
+                <div class="stat-value" id="stat-registrations">0</div>
+                <div class="stat-label">Inscripciones Totales</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">✅</div>
+              <div class="stat-content">
+                <div class="stat-value" id="stat-confirmed">0</div>
+                <div class="stat-label">Confirmadas</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">🏨</div>
+              <div class="stat-content">
+                <div class="stat-value" id="stat-accommodation">0</div>
+                <div class="stat-label">Con Alojamiento</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">📸</div>
+              <div class="stat-content">
+                <div class="stat-value" id="stat-pack">0</div>
+                <div class="stat-label">Pack Multimedia</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">👥</div>
+              <div class="stat-content">
+                <div class="stat-value" id="stat-volunteers">0</div>
+                <div class="stat-label">Voluntarios</div>
+              </div>
+            </div>
+            
+            <div class="stat-card">
+              <div class="stat-icon">💰</div>
+              <div class="stat-content">
+                <div class="stat-value" id="stat-revenue">0€</div>
+                <div class="stat-label">Ingresos Totales</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="quick-actions">
+            <h3>Acciones Rápidas</h3>
+            <div class="action-buttons">
+              <button class="btn btn-secondary" onclick="exportData('registrations')">
+                <span>📥</span> Exportar Inscripciones
+              </button>
+              <button class="btn btn-secondary" onclick="exportData('volunteers')">
+                <span>📥</span> Exportar Voluntarios
+              </button>
+              <button class="btn btn-secondary" onclick="refreshData()">
+                <span>🔄</span> Actualizar Datos
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- REGISTRATIONS TAB -->
+        <div id="registrations-tab" class="tab-content">
+          <div class="tab-header">
+            <h2>Inscripciones</h2>
+            <div class="tab-actions">
+              <input type="text" class="search-input" placeholder="Buscar equipo..." id="search-registrations">
+              <select class="filter-select" id="filter-category">
+                <option value="">Todas las categorías</option>
+                <option value="solo-competicion">Solo Competición</option>
+                <option value="competicion-alojamiento">Competición + Alojamiento</option>
+              </select>
+              <button class="btn btn-primary" onclick="exportData('registrations')">
+                Exportar CSV
+              </button>
+            </div>
+          </div>
+          
+          <div class="data-table-container">
+            <table class="data-table" id="registrations-table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Equipo</th>
+                  <th>Categoría</th>
+                  <th>Atletas</th>
+                  <th>Alojamiento</th>
+                  <th>Pack</th>
+                  <th>Total</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Se llenará dinámicamente -->
+              </tbody>
+            </table>
+            
+            <div class="empty-state" id="registrations-empty" style="display: none;">
+              <p>No hay inscripciones todavía</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- VOLUNTEERS TAB -->
+        <div id="volunteers-tab" class="tab-content">
+          <div class="tab-header">
+            <h2>Voluntarios</h2>
+            <div class="tab-actions">
+              <input type="text" class="search-input" placeholder="Buscar voluntario..." id="search-volunteers">
+              <select class="filter-select" id="filter-status">
+                <option value="">Todos los estados</option>
+                <option value="pending">Pendiente</option>
+                <option value="approved">Aprobado</option>
+                <option value="rejected">Rechazado</option>
+              </select>
+              <button class="btn btn-primary" onclick="exportData('volunteers')">
+                Exportar CSV
+              </button>
+            </div>
+          </div>
+          
+          <div class="data-table-container">
+            <table class="data-table" id="volunteers-table">
+              <thead>
+                <tr>
+                  <th>Fecha</th>
+                  <th>Nombre</th>
+                  <th>Email</th>
+                  <th>Teléfono</th>
+                  <th>Edad</th>
+                  <th>Ciudad</th>
+                  <th>Talla</th>
+                  <th>Disponibilidad</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Se llenará dinámicamente -->
+              </tbody>
+            </table>
+            
+            <div class="empty-state" id="volunteers-empty" style="display: none;">
+              <p>No hay voluntarios registrados</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTINGS TAB -->
+        <div id="settings-tab" class="tab-content">
+          <h2>Configuración</h2>
+          
+          <div class="settings-section">
+            <h3>Usuarios Admin</h3>
+            <p>Gestiona los usuarios con acceso al panel de administración.</p>
+            
+            <div class="settings-card">
+              <button class="btn btn-primary" onclick="showAddUserModal()">
+                + Añadir Usuario
+              </button>
+              
+              <table class="data-table" id="users-table">
+                <thead>
+                  <tr>
+                    <th>Email</th>
+                    <th>Nombre</th>
+                    <th>Rol</th>
+                    <th>Último Acceso</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Se llenará dinámicamente -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- MODALS -->
+  <!-- Registration Details Modal -->
+  <div id="registration-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Detalles de Inscripción</h3>
+        <button class="modal-close" onclick="closeModal('registration-modal')">&times;</button>
+      </div>
+      <div class="modal-body" id="registration-details">
+        <!-- Se llenará dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Volunteer Details Modal -->
+  <div id="volunteer-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Detalles de Voluntario</h3>
+        <button class="modal-close" onclick="closeModal('volunteer-modal')">&times;</button>
+      </div>
+      <div class="modal-body" id="volunteer-details">
+        <!-- Se llenará dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Supabase SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- Admin JS -->
+  <script src="/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WODFEST Salou 2026 | 7-8 Noviembre</title>
+  <meta name="description" content="WODFEST Salou 2026 - Competición CrossTraining Teams MMF. 7-8 Noviembre, Mediterranean Sport Hub, Salou. Inscripciones abiertas el 29 de marzo." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/popup.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="logo-text">WODFEST</span>
+        <span class="logo-sub">SALOU 2026</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <button class="nav-close" id="navClose" aria-label="Cerrar menu">✕</button>
+        <li><a href="#info">Info</a></li>
+        <li><a href="#categorias">Categorías</a></li>
+        <li><a href="#levelwod">Level WOD</a></li>
+        <li><a href="#reglamento">Reglamento</a></li>
+        <li><a href="#inscripciones" class="nav-cta">Inscripciones</a></li>
+        <li><a href="#voluntarios">Voluntarios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-video-wrapper">
+      <video autoplay muted loop playsinline class="hero-video" id="heroVideo" poster="">
+        <source src="assets/hero.mp4" type="video/mp4" />
+      </video>
+      <!-- Fallback si el video no carga -->
+      <div class="hero-video-placeholder" style="display: none;">
+        <div class="hero-video-overlay"></div>
+      </div>
+      <div class="hero-video-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-tag">7 · 8 NOVIEMBRE 2026 · SALOU</div>
+      <h1 class="hero-title">WODFEST<br /><span>SALOU</span></h1>
+      <p class="hero-tagline">SALOU · SUDOR · GLORIA</p>
+      <p class="hero-sub">Mediterranean Sport Hub · Tarragona, España</p>
+      <div class="hero-cta-group">
+        <a href="inscripcion.html" class="btn btn-primary">Inscríbete el 1 de Abril</a>
+        <a href="#info" class="btn btn-ghost">Más info</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="countdown-bar">
+    <div class="container">
+      <p class="countdown-label">Inscripciones abren en</p>
+      <div class="countdown" id="countdown">
+        <div class="countdown-item"><span id="cd-days">00</span><small>Días</small></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item"><span id="cd-hours">00</span><small>Horas</small></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item"><span id="cd-mins">00</span><small>Min</small></div>
+        <div class="countdown-sep">:</div>
+        <div class="countdown-item"><span id="cd-secs">00</span><small>Seg</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK FACTS -->
+  <section class="facts" id="info">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">El Evento</span>
+        <h2>WODFEST Salou 2026</h2>
+        <p>Una competición profesional, dinámica y centrada en el atleta. Tres amigos, una visión común y una pasión compartida por el crosstraining convirtieron una idea en realidad.</p>
+      </div>
+      <div class="facts-grid">
+        <div class="fact-card">
+          <div class="fact-icon">📍</div>
+          <h3>Ubicación</h3>
+          <p>Mediterranean Sport Hub</p>
+          <p class="fact-detail">Vial Fútbol Salou, 43840<br />Salou, Tarragona</p>
+          <a href="https://maps.google.com/?q=Mediterranean+Sport+Hub+Salou" target="_blank" class="fact-link">Ver en mapa →</a>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon">📅</div>
+          <h3>Fechas</h3>
+          <p>6 · 7 · 8 Noviembre</p>
+          <p class="fact-detail">Viernes: Check-in 16:00-20:00h<br />Sáb-Dom: Competición 08:00h</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon">👥</div>
+          <h3>Formato</h3>
+          <p>Teams MMF</p>
+          <p class="fact-detail">2 atletas masculinos + 1 atleta femenina por equipo</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon">🏋️</div>
+          <h3>WODs</h3>
+          <p>5 WODs clasificatorios</p>
+          <p class="fact-detail">+ WOD Final exclusivo para los 12 mejores equipos de cada categoría</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon">🏟️</div>
+          <h3>Capacidad</h3>
+          <p>~690 atletas</p>
+          <p class="fact-detail">230 equipos máximo en 4 categorías. Plazas limitadas.</p>
+        </div>
+        <div class="fact-card">
+          <div class="fact-icon">🎟️</div>
+          <h3>Público</h3>
+          <p>Acceso gratuito</p>
+          <p class="fact-detail">Espectadores bienvenidos de 08:00 a 20:00h. Food trucks y zona de experiencia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORÍAS -->
+  <section class="categorias" id="categorias">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Competición</span>
+        <h2>Categorías</h2>
+        <p>La categoría se asigna automáticamente según la puntuación obtenida en el Level WOD. No es posible elegirla manualmente.</p>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card">
+          <div class="cat-badge">84 equipos</div>
+          <h3>Scaled</h3>
+          <p>Para equipos que se inician o prefieren movimientos adaptados. La puerta de entrada perfecta a WODFEST.</p>
+          <p class="cat-athletes">252 atletas</p>
+        </div>
+        <div class="cat-card featured">
+          <div class="cat-badge">74 equipos</div>
+          <h3>Intermedio</h3>
+          <p>El nivel más competido. Para equipos con experiencia y ganas de dar el salto.</p>
+          <p class="cat-athletes">222 atletas</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-badge">36 equipos</div>
+          <h3>RX</h3>
+          <p>Máxima exigencia. Movimientos sin escala, cargas altas y una competición de alto nivel.</p>
+          <p class="cat-athletes">108 atletas</p>
+        </div>
+        <div class="cat-card">
+          <div class="cat-badge">36 equipos</div>
+          <h3>Master +130</h3>
+          <p>Para equipos de veteranos. Tres atletas ≥ 35 años cuya suma de edades sea ≥ 130 años.</p>
+          <p class="cat-athletes">108 atletas</p>
+        </div>
+      </div>
+      <div class="cat-note">
+        <p>⚡ Los <strong>12 mejores equipos</strong> de cada categoría disputarán el WOD Final</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEVEL WOD -->
+  <section class="levelwod" id="levelwod">
+    <div class="container">
+      <div class="levelwod-inner">
+        <div class="levelwod-text">
+          <span class="section-tag">Sistema de clasificación</span>
+          <h2>Level WOD 26.1</h2>
+          <p class="levelwod-desc">La participación en WODFEST Salou 2026 requiere la realización obligatoria del <strong>Level WOD 26.1</strong>. Es online y <strong>completamente gratuito</strong>.</p>
+          <div class="levelwod-steps">
+            <div class="step">
+              <div class="step-num">01</div>
+              <div class="step-info">
+                <h4>26.1A - WOD por equipos</h4>
+                <p>Los tres integrantes del equipo participan juntos en esta parte.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">02</div>
+              <div class="step-info">
+                <h4>26.1B - Parte individual</h4>
+                <p>Clean &amp; Jerk - repetición máxima. Cada atleta realiza su intento.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">03</div>
+              <div class="step-info">
+                <h4>Vídeo en continuo</h4>
+                <p>Ambas partes deben grabarse en un único vídeo continuo siguiendo las normas oficiales de grabación.</p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-num">04</div>
+              <div class="step-info">
+                <h4>Asignación automática</h4>
+                <p>La suma de puntuaciones determina automáticamente la categoría de competición. La organización puede revisar resultados para garantizar la integridad.</p>
+              </div>
+            </div>
+          </div>
+          <div class="levelwod-captain">
+            <strong>👤 Rol del Capitán</strong>
+            <p>El capitán realiza la inscripción, registra los datos de los tres integrantes y sube el vídeo oficial dentro del plazo establecido.</p>
+          </div>
+        </div>
+        <div class="levelwod-visual">
+          <div class="lw-card">
+            <div class="lw-card-tag">ONLINE</div>
+            <div class="lw-card-title">Level WOD</div>
+            <div class="lw-card-num">26.1</div>
+            <div class="lw-card-parts">
+              <div class="lw-part">A<small>Equipos</small></div>
+              <div class="lw-divider">+</div>
+              <div class="lw-part">B<small>Individual</small></div>
+            </div>
+            <div class="lw-card-free">GRATUITO</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGLAMENTO -->
+  <section class="reglamento" id="reglamento">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Normativa</span>
+        <h2>Reglamento</h2>
+        <p>La inscripción implica la aceptación íntegra del reglamento. El documento oficial estará disponible para firmar en el check-in.</p>
+      </div>
+      <div class="reglamento-grid">
+        <div class="reg-block">
+          <h4>Participación</h4>
+          <ul>
+            <li>Mayores de 18 años (o 16 con autorización legal)</li>
+            <li>Formato exclusivamente Teams MMF (2M + 1F)</li>
+            <li>Check-in obligatorio: viernes 6 de noviembre, 16:00-20:00h</li>
+          </ul>
+        </div>
+        <div class="reg-block">
+          <h4>Horarios</h4>
+          <ul>
+            <li>Sábado 7 Nov: 08:00 - 20:00h (estimado)</li>
+            <li>Domingo 8 Nov: 08:00 - 15:00h (estimado)</li>
+            <li>Briefing obligatorio ~15 min antes de cada WOD</li>
+            <li>Heats detallados publicados previamente</li>
+          </ul>
+        </div>
+        <div class="reg-block">
+          <h4>Material permitido</h4>
+          <ul>
+            <li>✅ Calleras, muñequeras, rodilleras</li>
+            <li>✅ Cinturón lumbar, calzado deportivo</li>
+            <li>✅ Magnesio (según normativa del recinto)</li>
+            <li>❌ Straps o ganchos de halterofilia</li>
+            <li>❌ Dispositivos electrónicos en pista</li>
+          </ul>
+        </div>
+        <div class="reg-block">
+          <h4>Penalizaciones</h4>
+          <ul>
+            <li>No reps · Penalizaciones de tiempo</li>
+            <li>Repeticiones añadidas · Descalificación del WOD</li>
+            <li>Las decisiones del juez en pista son definitivas</li>
+            <li>Reclamaciones solo por el capitán en la primera hora tras resultados provisionales</li>
+          </ul>
+        </div>
+        <div class="reg-block">
+          <h4>WODs</h4>
+          <ul>
+            <li>5 WODs clasificatorios para todos los equipos</li>
+            <li>WOD Final: solo los 12 mejores de cada categoría</li>
+            <li>WODs publicados progresivamente la semana previa</li>
+            <li>Standards en formato visual descargable</li>
+          </ul>
+        </div>
+        <div class="reg-block">
+          <h4>Cancelaciones</h4>
+          <ul>
+            <li>Cambios de nombre: hasta 30 días antes (tarifa 5€ tras ese plazo)</li>
+            <li>Inscripciones no reembolsables</li>
+            <li>Solicitudes solo por email: info@wodfestevent.com</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSCRIPCIONES -->
+  <section class="inscripciones" id="inscripciones">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Únete</span>
+        <h2>Inscripciones</h2>
+        <p>Las inscripciones abren el <strong>1 de abril de 2026</strong>. Elige tu modalidad y asegura tu plaza.</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="price-tier">Solo Competición</div>
+          <div class="price-phases">
+            <div class="price-phase">
+              <span class="phase-label">🚀 Lanzamiento 72h</span>
+              <span class="phase-price">85€</span>
+            </div>
+            <div class="price-phase">
+              <span class="phase-label">⏰ Early Entry</span>
+              <span class="phase-price">95€</span>
+            </div>
+            <div class="price-phase">
+              <span class="phase-label">💪 Precio oficial</span>
+              <span class="phase-price">110€</span>
+            </div>
+          </div>
+          <div class="price-includes">
+            <h5>Incluye:</h5>
+            <ul>
+              <li>✓ Level WOD obligatorio</li>
+              <li>✓ Hasta 5 WODs clasificatorios</li>
+              <li>✓ Acceso a Final Top 12 (si clasificas)</li>
+              <li>✓ Acceso al recinto oficial</li>
+              <li>✓ Zona de calentamiento</li>
+              <li>✓ Welcome pack</li>
+              <li>✓ Seguro del evento</li>
+            </ul>
+          </div>
+          <a href="inscripcion.html" class="btn btn-primary btn-full">Inscribirse el 1 de Abril</a>
+        </div>
+        <div class="price-card featured">
+          <div class="price-badge">⭐ Recomendado</div>
+          <div class="price-tier">Competición + Camping</div>
+          <p class="price-location">Camping Resort Cambrils ★★★★<br /><small>Pensión completa incluida</small></p>
+          <div class="price-phases">
+            <div class="price-phase">
+              <span class="phase-label">🚀 Lanzamiento 72h</span>
+              <span class="phase-price">225€</span>
+            </div>
+            <div class="price-phase">
+              <span class="phase-label">⏰ Early Entry</span>
+              <span class="phase-price">235€</span>
+            </div>
+            <div class="price-phase">
+              <span class="phase-label">💪 Precio oficial</span>
+              <span class="phase-price">250€</span>
+            </div>
+          </div>
+          <div class="price-includes">
+            <h5>Incluye todo lo anterior +</h5>
+            <ul>
+              <li>✓ Alojamiento viernes y sábado</li>
+              <li>✓ Pensión completa (desayuno, comida y cena)</li>
+              <li>✓ Acceso a WODFEST Night</li>
+              <li>✓ Acceso exclusivo zona alojamiento</li>
+              <li>✓ Check-out domingo antes de las 12:00h</li>
+            </ul>
+          </div>
+          <a href="inscripcion.html" class="btn btn-primary btn-full">Inscribirse el 1 de Abril</a>
+        </div>
+      </div>
+      <p class="price-note">
+        <strong>Proceso de inscripción:</strong><br/>
+        • <strong>Solo Competición:</strong> Te redirigimos directamente a Stripe para el pago seguro 🔐<br/>
+        • <strong>Con Alojamiento:</strong> Completas la inscripción y luego confirmas el pago en Stripe 🔐<br/>
+        <small style="opacity: 0.8;">Pago seguro procesado por Stripe, el estándar de seguridad internacional</small>
+      </p>
+    </div>
+  </section>
+
+  <!-- ALOJAMIENTO -->
+  <section class="alojamiento" id="alojamiento">
+    <div class="container">
+      <div class="alojamiento-inner">
+        <div class="aloj-text">
+          <span class="section-tag">Dónde dormir</span>
+          <h2>Alojamiento oficial</h2>
+          <p>El alojamiento oficial de WODFEST Salou 2026 es el <strong>Camping Resort Cambrils 4 estrellas</strong>. A solo 15 minutos andando o 5 minutos en coche del recinto de competición.</p>
+          <div class="aloj-features">
+            <div class="aloj-feat">🏕️ Resort 4 estrellas</div>
+            <div class="aloj-feat">🍳 Pensión completa</div>
+            <div class="aloj-feat">🎉 WODFEST Night</div>
+            <div class="aloj-feat">🚶 15 min andando al recinto</div>
+          </div>
+          <p class="aloj-checkout">Check-out: <strong>domingo antes de las 12:00h</strong></p>
+          <a href="#inscripciones" class="btn btn-primary">Reservar con inscripción</a>
+        </div>
+        <div class="aloj-map">
+          <div class="map-placeholder">
+            <span>📍 Mediterranean Sport Hub, Salou</span>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3007.3127558364604!2d1.116495!3d41.084012699999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a15a379ea2b289%3A0x18d4c7a7a2ab6a69!2sMediterranean%20Sports%20Hub%20-%20Futbol%20Salou!5e0!3m2!1ses!2ses!4v1775069153307!5m2!1ses!2ses" width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section class="experiencia">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Vívelo</span>
+        <h2>La Experiencia WODFEST</h2>
+      </div>
+      <div class="exp-grid">
+        <div class="exp-card">
+          <div class="exp-icon">🎉</div>
+          <h4>WODFEST Night</h4>
+          <p>La fiesta oficial del evento. Exclusiva para atletas alojados. DJs oficiales y ambiente inmejorable.</p>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon">🎵</div>
+          <h4>DJ Competición</h4>
+          <p>Música en directo durante toda la competición. El ambiente que necesitas para rendir al máximo.</p>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon">🌮</div>
+          <h4>Food Trucks</h4>
+          <p>Zona de restauración disponible para atletas y público. Come bien, compite mejor.</p>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon">🏥</div>
+          <h4>WODFEST Health</h4>
+          <p>Zona Recovery y servicios de fisioterapia en el recinto para cuidar tu cuerpo.</p>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon">🏆</div>
+          <h4>Premios</h4>
+          <p>Trofeos oficiales, material deportivo y regalos de sponsors para las distintas categorías.</p>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon">🆓</div>
+          <h4>Acceso público gratuito</h4>
+          <p>El evento está abierto al público de 08:00 a 20:00h. Trae a tu familia y amigos sin coste.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- VOLUNTARIOS -->
+  <section class="voluntarios" id="voluntarios">
+    <div class="container">
+      <div class="vol-inner">
+
+        <!-- Left: info -->
+        <div class="vol-left">
+          <span class="section-tag">Forma parte</span>
+          <h2>Hazte voluntario</h2>
+          <p>¿Quieres vivir WODFEST desde dentro? Únete al equipo de voluntarios y forma parte del evento que está revolucionando el crosstraining en Salou.</p>
+          <p>Buscamos personas con energía, pasión por el crosstraining y ganas de dar lo mejor de sí mismas en un evento de alto nivel.</p>
+          <div class="vol-perks">
+            <div class="perk">🎽 Equipación oficial del evento</div>
+            <div class="perk">🍽️ Manutención durante el evento</div>
+            <div class="perk">🏅 Acreditación de voluntario</div>
+            <div class="perk">🤝 Acceso a zonas restringidas</div>
+            <div class="perk">⚡ Experiencia en evento de élite</div>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <div class="vol-form-wrap">
+          <div class="vol-form-card" id="volFormCard">
+            <h3 class="vol-form-title">Apúntate como voluntario</h3>
+
+            <form id="volunteerForm" novalidate>
+              <div class="vol-fields-row">
+                <div class="vol-field">
+                  <label>Nombre <span class="required">*</span></label>
+                  <input type="text" id="vf-name" placeholder="Tu nombre" required />
+                </div>
+                <div class="vol-field">
+                  <label>Apellidos <span class="required">*</span></label>
+                  <input type="text" id="vf-surname" placeholder="Tus apellidos" required />
+                </div>
+              </div>
+              <div class="vol-fields-row">
+                <div class="vol-field">
+                  <label>Email <span class="required">*</span></label>
+                  <input type="email" id="vf-email" placeholder="email@ejemplo.com" required />
+                </div>
+                <div class="vol-field">
+                  <label>Teléfono</label>
+                  <input type="tel" id="vf-phone" placeholder="+34 600 000 000" />
+                </div>
+              </div>
+              <div class="vol-fields-row">
+                <div class="vol-field">
+                  <label>Edad <span class="required">*</span></label>
+                  <input type="number" id="vf-age" placeholder="18" min="16" max="99" required />
+                </div>
+                <div class="vol-field">
+                  <label>Ciudad</label>
+                  <input type="text" id="vf-city" placeholder="Tu ciudad" />
+                </div>
+              </div>
+
+              <div class="vol-field vol-field-full">
+                <label>Talla de camiseta <span class="required">*</span></label>
+                <select id="vf-tshirt" required>
+                  <option value="">Selecciona talla</option>
+                  <option value="XS">XS</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="XXL">XXL</option>
+                  <option value="XXXL">XXXL</option>
+                </select>
+              </div>
+
+              <div class="vol-field vol-field-full">
+                <label>Disponibilidad <span class="required">*</span></label>
+                <div class="vol-checkboxes">
+                  <label class="vol-check">
+                    <input type="checkbox" name="availability" value="Viernes 6 Nov (Check-in)" />
+                    <span>Viernes 6 Nov <small>Check-in</small></span>
+                  </label>
+                  <label class="vol-check">
+                    <input type="checkbox" name="availability" value="Sábado 7 Nov" />
+                    <span>Sábado 7 Nov</span>
+                  </label>
+                  <label class="vol-check">
+                    <input type="checkbox" name="availability" value="Domingo 8 Nov" />
+                    <span>Domingo 8 Nov</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="vol-field vol-field-full">
+                <label>Experiencia en eventos</label>
+                <select id="vf-exp">
+                  <option value="">Selecciona una opción</option>
+                  <option value="Sin experiencia">Sin experiencia previa</option>
+                  <option value="1-2 eventos">1-2 eventos</option>
+                  <option value="3-5 eventos">3-5 eventos</option>
+                  <option value="Más de 5 eventos">Más de 5 eventos</option>
+                </select>
+              </div>
+
+              <div class="vol-field vol-field-full">
+                <label>¿Por qué quieres ser voluntario?</label>
+                <textarea id="vf-message" rows="3" placeholder="Cuéntanos un poco sobre ti y tu motivación..."></textarea>
+              </div>
+
+              <div class="vol-form-error hidden" id="volFormError"></div>
+
+              <button type="submit" class="btn btn-primary btn-full vol-submit" id="volSubmitBtn">
+                <span id="volBtnText">Quiero ser voluntario 🙌</span>
+                <span id="volBtnLoader" class="hidden">Enviando...</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Success state (hidden by default) -->
+          <div class="vol-success hidden" id="volSuccess">
+            <div class="vol-success-icon">🎉</div>
+            <h3>¡Apuntado!</h3>
+            <p>Hemos recibido tu solicitud. El equipo de WODFEST se pondrá en contacto contigo antes del evento. ¡Nos vemos en Salou!</p>
+            <p class="vol-success-tag">#SALOUSUDORYGLORIA</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE NOSOTROS -->
+  <section class="about" id="sobre">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Quiénes somos</span>
+        <h2>Sobre WODFEST</h2>
+      </div>
+      <div class="about-content">
+        <div class="about-text">
+          <p class="about-lead">Tres amigos, una visión común y una pasión compartida por el crosstraining decidieron convertir una idea en realidad.</p>
+          <p>Así nació WODFEST Salou: una competición profesional, dinámica y centrada en el atleta. No somos una empresa anónima - somos atletas que entienden lo que necesitas porque hemos estado donde tú estás.</p>
+          <p>Nuestro objetivo es crear el evento de crosstraining más memorable de Tarragona: organización impecable, atmósfera brutal y una experiencia que querrás repetir cada año.</p>
+          <div class="about-social">
+            <a href="https://instagram.com/wodfestsalou" target="_blank" class="social-link">
+              <span>📷</span> @wodfestsalou
+            </a>
+          </div>
+        </div>
+        <div class="about-identity">
+          <div class="identity-card">
+            <div class="id-item">
+              <span class="id-label">Hashtag oficial</span>
+              <span class="id-value">#SALOUSUDORYGLORIA</span>
+            </div>
+            <div class="id-item">
+              <span class="id-label">Instagram</span>
+              <span class="id-value">@wodfestsalou</span>
+            </div>
+            <div class="id-item">
+              <span class="id-label">Email</span>
+              <span class="id-value">info@wodfestevent.com</span>
+            </div>
+            <div class="id-item">
+              <span class="id-label">Idiomas</span>
+              <span class="id-value">Castellano · English</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto">
+    <div class="container">
+      <div class="section-header light">
+        <span class="section-tag">Habla con nosotros</span>
+        <h2>Contacto</h2>
+        <p>¿Tienes dudas? Escríbenos y te respondemos lo antes posible.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-item">
+            <div class="ci-icon">✉️</div>
+            <div class="ci-text">
+              <h4>Email oficial</h4>
+              <a href="mailto:info@wodfestevent.com">info@wodfestevent.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📷</div>
+            <div class="ci-text">
+              <h4>Instagram</h4>
+              <a href="https://instagram.com/wodfestsalou" target="_blank">@wodfestsalou</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon">📍</div>
+            <div class="ci-text">
+              <h4>Recinto</h4>
+              <p>Mediterranean Sport Hub<br />Vial Fútbol Salou, 43840<br />Salou, Tarragona</p>
+            </div>
+          </div>
+          <div class="contact-note">
+            <p>⚠️ Los cambios de nombre y cualquier gestión deben realizarse exclusivamente por email. No se aceptan solicitudes por redes sociales.</p>
+          </div>
+          <div class="contact-note" style="margin-top: 20px; background: #FFD700;">
+            <p><strong>🤝 ¿Quieres ser sponsor de WODFEST Salou 2026?</strong><br>
+            Únete a las marcas que hacen posible este evento. Contáctanos en <a href="mailto:info@wodfestevent.com" style="color: inherit; text-decoration: underline;">info@wodfestevent.com</a> o usa el formulario seleccionando "Sponsors" en el motivo.</p>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm">
+          <div class="form-group">
+            <input type="text" placeholder="Nombre" required />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email" required />
+          </div>
+          <div class="form-group">
+            <select>
+              <option value="">Motivo del contacto</option>
+              <option>Inscripciones</option>
+              <option>Alojamiento</option>
+              <option>Sponsors</option>
+              <option>Voluntarios</option>
+              <option>Prensa / Media</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea rows="5" placeholder="Tu mensaje..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">Enviar mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">WODFEST SALOU 2026</div>
+          <p>7 · 8 Noviembre 2026<br />Mediterranean Sport Hub, Salou</p>
+          <p class="footer-hashtag">#SALOUSUDORYGLORIA</p>
+        </div>
+        <div class="footer-links">
+          <h5>Secciones</h5>
+          <a href="#info">Información</a>
+          <a href="#categorias">Categorías</a>
+          <a href="#levelwod">Level WOD</a>
+          <a href="#reglamento">Reglamento</a>
+          <a href="#inscripciones">Inscripciones</a>
+          <a href="#alojamiento">Alojamiento</a>
+          <a href="#voluntarios">Voluntarios</a>
+          <a href="#contacto">Contacto</a>
+          <a href="legal.html">Aviso Legal</a>
+        </div>
+        <div class="footer-contact">
+          <h5>Contacto</h5>
+          <a href="mailto:info@wodfestevent.com">info@wodfestevent.com</a>
+          <a href="https://instagram.com/wodfestsalou" target="_blank">@wodfestsalou</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 WODFEST Event. Todos los derechos reservados. · <a href="legal.html" style="color: inherit; text-decoration: underline;">Aviso Legal y Política de Privacidad</a> · <a href="javascript:void(0)" onclick="openCookieSettings()" style="color: inherit; text-decoration: underline;">🍪 Configurar Cookies</a></p>
+        <p>Organizado por WODFEST EVENT · Salou, Tarragona, España</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/volunteer-form.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/popup.js"></script>
+  <script src="js/cookies.js"></script>
+  <script src="js/admin-sync.js"></script>
+  <script src="js/volunteer-form-handler.js"></script>
+  <script src="js/wodfest-night-popup.js"></script>
+
+  <!-- Video fallback handler -->
+  <script>
+    const heroVideo = document.getElementById('heroVideo');
+    const placeholder = document.querySelector('.hero-video-placeholder');
+
+    if (heroVideo) {
+      // Si el video no puede cargar, mostrar el placeholder
+      heroVideo.addEventListener('error', function() {
+        heroVideo.style.display = 'none';
+        if (placeholder) placeholder.style.display = 'block';
+      });
+
+      // Mejorar rendimiento en móviles
+      if (window.innerWidth < 768) {
+        heroVideo.setAttribute('preload', 'none');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Volunteers API</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Test API de Voluntarios</h1>
+    
+    <button onclick="testAPI()">Probar API</button>
+    
+    <h2>Respuesta:</h2>
+    <pre id="response"></pre>
+    
+    <script>
+    async function testAPI() {
+        const testData = {
+            name: "Test Voluntario",
+            email: "test" + Date.now() + "@example.com",
+            phone: "666123456",
+            tshirt_size: "L",
+            availability: "Ambos días",
+            experience: "Primera vez",
+            comments: "Prueba desde test page"
+        };
+        
+        console.log('Enviando:', testData);
+        
+        try {
+            const response = await fetch('/api/volunteers', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(testData)
+            });
+            
+            const result = await response.json();
+            
+            document.getElementById('response').textContent = 
+                'Status: ' + response.status + '\n' +
+                'Response: ' + JSON.stringify(result, null, 2);
+                
+            console.log('Response:', response);
+            console.log('Result:', result);
+            
+        } catch (error) {
+            document.getElementById('response').textContent = 
+                'Error: ' + error.message;
+            console.error('Error:', error);
+        }
+    }
+    </script>
+</body>
+</html>

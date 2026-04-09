@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Popup WODFEST Night</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background: #1a1a1a;
+      color: white;
+      padding: 50px;
+      font-family: Arial, sans-serif;
+    }
+    .test-section {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #2196f3;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="test-section">
+    <h1>Test del Popup WODFEST Night</h1>
+    <p>Haz clic en los siguientes botones para probar:</p>
+    
+    <a href="inscripcion.html" class="btn">Ir a Inscripción (debería mostrar popup)</a>
+    
+    <br><br>
+    
+    <button onclick="sessionStorage.clear(); location.reload();" class="btn" style="background: #f44336;">
+      Limpiar SessionStorage y Recargar
+    </button>
+    
+    <br><br>
+    
+    <button onclick="document.getElementById('wodfest-night-popup').style.display='flex'; document.getElementById('wodfest-night-popup').classList.add('active');" class="btn" style="background: #4caf50;">
+      Mostrar Popup Directamente (Debug)
+    </button>
+  </div>
+
+  <script src="js/wodfest-night-popup.js"></script>
+</body>
+</html>

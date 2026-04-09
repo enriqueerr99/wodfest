@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago Cancelado - WODFEST Salou 2026</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/inscripcion.css" />
+  <style>
+    .cancel-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: var(--black);
+    }
+    .cancel-content {
+      background: var(--dark2);
+      border: 2px solid var(--red);
+      border-radius: var(--radius-lg);
+      padding: 48px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    .cancel-icon {
+      width: 80px;
+      height: 80px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 48px;
+    }
+    .cancel-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+    .cancel-subtitle {
+      font-size: 1.125rem;
+      color: var(--gray-light);
+      margin-bottom: 32px;
+    }
+    .cancel-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .saved-data-notice {
+      background: var(--dark);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 24px;
+      color: var(--gray-light);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="cancel-container">
+    <div class="cancel-content">
+      <div class="cancel-icon">❌</div>
+      <h1 class="cancel-title">Pago Cancelado</h1>
+      <p class="cancel-subtitle">No se ha completado tu inscripción</p>
+      
+      <div class="saved-data-notice">
+        <p>💡 No te preocupes, tus datos están guardados. Puedes volver cuando quieras para completar el proceso.</p>
+      </div>
+      
+      <div class="cancel-actions">
+        <a href="/inscripcion" class="btn btn-primary">Volver al formulario</a>
+        <a href="/" class="btn btn-ghost">Ir al inicio</a>
+      </div>
+      
+      <p style="margin-top: 32px; color: var(--gray-light); font-size: 0.875rem;">
+        Si has tenido algún problema con el pago, contáctanos en <a href="mailto:info@wodfestevent.com" style="color: var(--blue-light);">info@wodfestevent.com</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Verificar si hay datos guardados
+    document.addEventListener('DOMContentLoaded', function() {
+      const registrationData = localStorage.getItem('wodfest_registration_data');
+      
+      if (registrationData) {
+        console.log('Datos de inscripción guardados encontrados');
+        // Los datos persisten para cuando el usuario vuelva
+      }
+    });
+  </script>
+</body>
+</html>

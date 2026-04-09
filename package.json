@@ -1,0 +1,15 @@
+{
+  "name": "wodfest-salou",
+  "version": "1.0.0",
+  "description": "WODFEST Salou 2026 - Sistema de inscripción y gestión",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "stripe": "^14.17.0",
+    "@supabase/supabase-js": "^2.39.0"
+  },
+  "scripts": {
+    "dev": "vercel dev",
+    "deploy": "vercel --prod"
+  }
+}

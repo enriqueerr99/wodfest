@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inscripción — WODFEST Salou 2026</title>
+  <meta name="description" content="Inscríbete en WODFEST Salou 2026. Teams MMF, 7-8 Noviembre, Mediterranean Sport Hub." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/inscripcion.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar-fixed" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <span class="logo-text">WODFEST</span>
+        <span class="logo-sub">SALOU 2026</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="index.html#info">Info</a></li>
+        <li><a href="index.html#categorias">Categorías</a></li>
+        <li><a href="index.html#inscripciones">Inscripciones</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- INSCRIPCIÓN PAGE -->
+  <div class="inscripcion-page">
+    <div class="inscripcion-container">
+      <!-- HEADER -->
+      <div class="inscripcion-header">
+        <h1 class="inscripcion-title">Inscripción de equipo</h1>
+        <p class="inscripcion-subtitle">Completa los datos de los tres integrantes de tu equipo. Serás redirigido a Wodbuster para finalizar la inscripción.</p>
+      </div>
+
+      <!-- PROGRESS BAR -->
+      <div class="progress-bar">
+        <div class="progress-step active">
+          <div class="step-circle">1</div>
+          <div class="step-label">Modalidad</div>
+        </div>
+        <div class="progress-step">
+          <div class="step-circle">2</div>
+          <div class="step-label">Atletas</div>
+        </div>
+        <div class="progress-step">
+          <div class="step-circle">3</div>
+          <div class="step-label">Confirmación</div>
+        </div>
+      </div>
+
+      <!-- REGISTRATION FORM -->
+      <form id="registrationForm" class="registration-form">
+
+        <!-- MODALIDAD SECTION -->
+        <div class="form-section">
+          <h2 class="section-title">Elige tu modalidad</h2>
+          
+          <div class="category-options">
+            <!-- SOLO COMPETICIÓN -->
+            <label class="category-card">
+              <input type="radio" name="category" value="solo-competicion" data-price="85" />
+              <div class="category-content">
+                <div class="category-header">
+                  <span class="category-name">Solo Competición</span>
+                  <span class="category-price launch">85 €</span>
+                </div>
+                <div class="category-meta">
+                  <span>✓ Level WOD obligatorio</span><br/>
+                  <span>✓ Hasta 5 WODs clasificatorios</span><br/>
+                  <span>✓ Acceso al Final Top 12 (si clasificas)</span>
+                </div>
+                <div class="category-description">
+                  <p>Welcome pack + Seguro + Precio lanzamiento 72h</p>
+                  <div class="price-phases">
+                    <div class="price-phase active">
+                      <span class="phase-label">🚀 Lanzamiento (72h)</span>
+                      <span class="phase-price">85€</span>
+                    </div>
+                    <div class="price-phase">
+                      <span class="phase-label">🟨 Early Entry</span>
+                      <span class="phase-price">95€</span>
+                    </div>
+                    <div class="price-phase">
+                      <span class="phase-label">⬜ Precio oficial</span>
+                      <span class="phase-price">110€</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </label>
+
+            <!-- COMPETICIÓN + ALOJAMIENTO -->
+            <label class="category-card">
+              <input type="radio" name="category" value="competicion-alojamiento" data-price="225" />
+              <div class="category-content">
+                <div class="category-header">
+                  <span class="category-name">Competición + Camping</span>
+                  <span class="category-price launch">225 €</span>
+                </div>
+                <div class="category-meta">
+                  <span>✓ Todo lo anterior incluido</span><br/>
+                  <span>✓ Alojamiento Resort Cambrils ★★★★</span><br/>
+                  <span>✓ Pensión completa (3 comidas)</span><br/>
+                  <span>✓ Acceso WODFEST Night</span>
+                </div>
+                <div class="category-description">
+                  <p>Todo incluido + Precio lanzamiento + 15 min del recinto</p>
+                  <div class="price-phases">
+                    <div class="price-phase active">
+                      <span class="phase-label">🚀 Lanzamiento (72h)</span>
+                      <span class="phase-price">225€</span>
+                    </div>
+                    <div class="price-phase">
+                      <span class="phase-label">🟨 Early Entry</span>
+                      <span class="phase-price">235€</span>
+                    </div>
+                    <div class="price-phase">
+                      <span class="phase-label">⬜ Precio oficial</span>
+                      <span class="phase-price">250€</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </label>
+          </div>
+          
+          <!-- ACOMPAÑANTES SECTION -->
+          <div id="companions-section" style="display: none; margin-top: 24px;">
+            <div class="companions-question">
+              <h3 style="font-size: 1.25rem; margin-bottom: 12px;">¿Vienes con acompañantes al alojamiento?</h3>
+              <p style="color: var(--gray-light); margin-bottom: 16px;">Precio por acompañante: 140€ (70€/noche × 2 noches)</p>
+              <div class="form-group">
+                <label for="numCompanions">Número de acompañantes (máximo 3)</label>
+                <select id="numCompanions" name="numCompanions" class="form-select">
+                  <option value="0">Sin acompañantes</option>
+                  <option value="1">1 acompañante</option>
+                  <option value="2">2 acompañantes</option>
+                  <option value="3">3 acompañantes</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DATOS DE ATLETAS -->
+        <div class="form-section">
+          <h2 class="section-title">Datos de los atletas</h2>
+          <p style="color: var(--gray-light); margin-bottom: 24px;">Capitán / Capitana del equipo: responsable de la inscripción y del vídeo Level WOD.</p>
+
+          <!-- NOMBRE DEL EQUIPO -->
+          <div class="form-group" style="margin-bottom: 32px;">
+            <label for="teamName">Nombre del equipo <span class="required">*</span></label>
+            <input type="text" id="teamName" name="teamName" class="form-input" placeholder="Ej: Los Invictos" required />
+          </div>
+
+          <!-- ATLETA 1 -->
+          <div class="athlete-card">
+            <div class="athlete-header">
+              <h3 class="athlete-title">Primer atleta (capitán/a)</h3>
+              <span class="athlete-badge">Responsable del equipo</span>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete1-name">Nombre <span class="required">*</span></label>
+                <input type="text" id="athlete1-name" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label for="athlete1-surname">Apellidos <span class="required">*</span></label>
+                <input type="text" id="athlete1-surname" class="form-input" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete1-email">Email <span class="required">*</span></label>
+                <input type="email" id="athlete1-email" class="form-input" placeholder="atleta@email.com" required />
+                <small style="color: var(--gray); font-size: 0.8rem;">Aquí recibirás la confirmación de pago</small>
+              </div>
+              <div class="form-group">
+                <label for="athlete1-phone">Teléfono <span class="required">*</span></label>
+                <input type="tel" id="athlete1-phone" class="form-input" placeholder="612 345 678" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete1-birthdate">Fecha de nacimiento <span class="required">*</span></label>
+                <input type="date" id="athlete1-birthdate" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label for="athlete1-dni">DNI / NIE / Pasaporte <span class="required">*</span></label>
+                <input type="text" id="athlete1-dni" class="form-input" placeholder="12345678A" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete1-tshirt">Talla camiseta <span class="required">*</span></label>
+                <select id="athlete1-tshirt" class="form-select" required>
+                  <option value="">Selecciona talla</option>
+                  <option value="XS">XS</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="XXL">XXL</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="athlete1-box">Box / Centro</label>
+                <input type="text" id="athlete1-box" class="form-input" placeholder="CrossFit Box Name" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="athlete1-city">Ciudad <span class="required">*</span></label>
+              <input type="text" id="athlete1-city" class="form-input" placeholder="Barcelona" required />
+            </div>
+          </div>
+
+          <!-- ATLETA 2 -->
+          <div class="athlete-card">
+            <div class="athlete-header">
+              <h3 class="athlete-title">Segundo atleta (masculino)</h3>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete2-name">Nombre <span class="required">*</span></label>
+                <input type="text" id="athlete2-name" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label for="athlete2-surname">Apellidos <span class="required">*</span></label>
+                <input type="text" id="athlete2-surname" class="form-input" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete2-email">Email <span class="required">*</span></label>
+                <input type="email" id="athlete2-email" class="form-input" placeholder="atleta@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="athlete2-phone">Teléfono</label>
+                <input type="tel" id="athlete2-phone" class="form-input" placeholder="612 345 678" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete2-birthdate">Fecha de nacimiento <span class="required">*</span></label>
+                <input type="date" id="athlete2-birthdate" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label for="athlete2-dni">DNI / NIE / Pasaporte</label>
+                <input type="text" id="athlete2-dni" class="form-input" placeholder="12345678A" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete2-tshirt">Talla camiseta <span class="required">*</span></label>
+                <select id="athlete2-tshirt" class="form-select" required>
+                  <option value="">Selecciona talla</option>
+                  <option value="XS">XS</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="XXL">XXL</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="athlete2-box">Box / Centro</label>
+                <input type="text" id="athlete2-box" class="form-input" placeholder="CrossFit Box Name" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="athlete2-city">Ciudad</label>
+              <input type="text" id="athlete2-city" class="form-input" placeholder="Barcelona" />
+            </div>
+          </div>
+
+          <!-- ATLETA 3 -->
+          <div class="athlete-card">
+            <div class="athlete-header">
+              <h3 class="athlete-title">Tercer atleta (femenina)</h3>
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete3-name">Nombre <span class="required">*</span></label>
+                <input type="text" id="athlete3-name" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label for="athlete3-surname">Apellidos <span class="required">*</span></label>
+                <input type="text" id="athlete3-surname" class="form-input" required />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete3-email">Email <span class="required">*</span></label>
+                <input type="email" id="athlete3-email" class="form-input" placeholder="atleta@email.com" required />
+              </div>
+              <div class="form-group">
+                <label for="athlete3-phone">Teléfono</label>
+                <input type="tel" id="athlete3-phone" class="form-input" placeholder="612 345 678" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete3-birthdate">Fecha de nacimiento <span class="required">*</span></label>
+                <input type="date" id="athlete3-birthdate" class="form-input" required />
+              </div>
+              <div class="form-group">
+                <label for="athlete3-dni">DNI / NIE / Pasaporte</label>
+                <input type="text" id="athlete3-dni" class="form-input" placeholder="12345678A" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="athlete3-tshirt">Talla camiseta <span class="required">*</span></label>
+                <select id="athlete3-tshirt" class="form-select" required>
+                  <option value="">Selecciona talla</option>
+                  <option value="XS">XS</option>
+                  <option value="S">S</option>
+                  <option value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                  <option value="XXL">XXL</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="athlete3-box">Box / Centro</label>
+                <input type="text" id="athlete3-box" class="form-input" placeholder="CrossFit Box Name" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="athlete3-city">Ciudad</label>
+              <input type="text" id="athlete3-city" class="form-input" placeholder="Barcelona" />
+            </div>
+          </div>
+        </div>
+        
+        <!-- DATOS DE ACOMPAÑANTES -->
+        <div id="companions-forms-section" class="form-section" style="display: none;">
+          <h2 class="section-title">Datos de los acompañantes</h2>
+          <p style="color: var(--gray-light); margin-bottom: 24px;">Información de las personas adicionales que se alojarán con el equipo.</p>
+          
+          <div id="companions-forms-container">
+            <!-- Los formularios de acompañantes se generarán dinámicamente aquí -->
+          </div>
+        </div>
+
+        <!-- RESUMEN DE INSCRIPCIÓN -->
+        <div class="form-section">
+          <h2 class="section-title">Resumen de inscripción</h2>
+          
+          <div class="payment-summary">
+            <div class="summary-header">
+              <span class="summary-title">WODFEST Salou 2026</span>
+              <span class="summary-subtitle">7-8 Noviembre · Mediterranean Sport Hub, Salou</span>
+            </div>
+            
+            <div class="summary-content">
+              <div class="summary-row">
+                <span>Modalidad</span>
+                <span id="summary-category">-</span>
+              </div>
+              <div class="summary-row">
+                <span>Equipo</span>
+                <span id="summary-team">-</span>
+              </div>
+              <div class="summary-row">
+                <span>Atleta 1</span>
+                <span id="summary-athlete1">-</span>
+              </div>
+              <div class="summary-row">
+                <span>Atleta 2</span>
+                <span id="summary-athlete2">-</span>
+              </div>
+              <div class="summary-row">
+                <span>Atleta 3</span>
+                <span id="summary-athlete3">-</span>
+              </div>
+              <div class="summary-row total">
+                <span>Total</span>
+                <span class="summary-price">0€</span>
+              </div>
+            </div>
+
+            <!-- UPSELL PACK MULTIMEDIA -->
+            <div class="upsell-block">
+              <div class="upsell-separator"></div>
+              <label class="upsell-checkbox">
+                <input type="checkbox" id="packMultimedia" />
+                <div class="upsell-content">
+                  <div class="upsell-header">
+                    <span class="upsell-title">📸 Pack Multimedia Privado para tu equipo</span>
+                    <span class="upsell-price">+60€ total</span>
+                  </div>
+                  <p class="upsell-description">
+                    1 reel profesional + 40 fotos de tu equipo durante el evento
+                  </p>
+                  <p class="upsell-delivery">Entrega digital en los 30 días posteriores al evento.</p>
+                </div>
+              </label>
+            </div>
+
+            <!-- LEGAL -->
+            <div class="legal-block">
+              <label class="checkbox-label">
+                <input type="checkbox" id="acceptConsent" required />
+                <span>He leído y acepto el <a href="javascript:void(0)" onclick="openConsentModal()" style="color: var(--blue-light); text-decoration: underline;">documento de exoneración de responsabilidad</a>. Confirmo que todos los miembros del equipo conocen y aceptan estos términos.</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="acceptRules" required />
+                <span>He leído y acepto el <a href="legal.html#terminos" target="_blank">reglamento oficial y términos</a> de WODFEST Salou 2026.</span>
+              </label>
+              <label class="checkbox-label">
+                <input type="checkbox" id="acceptPrivacy" required />
+                <span>Acepto la <a href="legal.html" target="_blank">política de privacidad</a> y el uso de mis datos para la gestión de la inscripción.</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- FORM FOOTER -->
+        <div class="form-footer">
+          <button type="button" class="btn btn-ghost" onclick="history.back()">← Atrás</button>
+          <a href="https://buy.stripe.com/9B66oH0m61Ti9yh10jefC00" class="btn btn-primary" id="submit-btn">Continuar inscripción →</a>
+        </div>
+
+        <!-- INFO ADICIONAL -->
+        <div style="text-align: center; margin-top: 24px;">
+          <div style="background: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); padding: 16px 24px; border-radius: 8px; display: inline-block;">
+            <p style="color: var(--blue-light); font-size: 0.875rem; margin: 0;">
+              <strong>Proceso de inscripción:</strong><br/>
+              <span style="color: var(--gray-light);">
+                <span id="process-info-competition" style="display: none;">
+                  Serás redirigido a Stripe para completar el pago de forma segura. 🔐
+                </span>
+                <span id="process-info-accommodation" style="display: none;">
+                  1. Confirmaremos tu reserva de alojamiento<br/>
+                  2. Te redirigiremos a Stripe para completar el pago de forma segura 🔐
+                </span>
+                <span id="process-info-default">
+                  Selecciona una modalidad para ver los siguientes pasos
+                </span>
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/save-to-sheets.js"></script>
+  <script src="js/dynamic-checkout-link.js"></script>
+  <script src="js/stripe-checkout.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/inscripcion.js"></script>
+  <script src="js/modal-consent.js"></script>
+  <script src="js/upsell-modal.js"></script>
+  <script src="js/cookies.js"></script>
+  <script src="js/admin-sync.js"></script>
+</body>
+</html>

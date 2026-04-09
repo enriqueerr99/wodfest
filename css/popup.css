@@ -1,0 +1,290 @@
+/* ========================================
+   WODFEST — Launch Countdown Popup
+======================================== */
+
+/* Overlay */
+.launch-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: overlayIn 0.4s ease forwards;
+}
+.launch-overlay.hiding {
+  animation: overlayOut 0.4s ease forwards;
+}
+
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes overlayOut {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+/* Popup card */
+.launch-popup {
+  position: relative;
+  background: #0d1520;
+  border: 1px solid rgba(33, 150, 243, 0.3);
+  border-radius: 20px;
+  max-width: 620px;
+  width: 100%;
+  padding: 56px 48px 48px;
+  text-align: center;
+  box-shadow:
+    0 0 80px rgba(33, 150, 243, 0.15),
+    0 40px 80px rgba(0, 0, 0, 0.6);
+  animation: popupIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  overflow: hidden;
+}
+
+/* Glow accent top */
+.launch-popup::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #2196f3, transparent);
+}
+
+/* Animated background lines */
+.launch-popup::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(33,150,243,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+@keyframes popupIn {
+  from {
+    opacity: 0;
+    transform: scale(0.88) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Close button */
+.launch-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,0.4);
+  font-size: 1rem;
+  line-height: 1;
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+.launch-close:hover {
+  background: rgba(255,255,255,0.1);
+  color: var(--white);
+}
+
+/* Tag */
+.popup-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #2196f3;
+  border: 1px solid rgba(33,150,243,0.35);
+  padding: 5px 14px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+.popup-tag .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2196f3;
+  animation: blink 1.4s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+/* Title */
+.popup-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 8vw, 4rem);
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 1;
+}
+.popup-title span {
+  color: #2196f3;
+}
+
+/* Subtitle */
+.popup-sub {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Countdown */
+.popup-countdown {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+.pc-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 88px;
+}
+.pc-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 10vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  color: #ffffff;
+  background: linear-gradient(160deg, #ffffff 30%, rgba(33,150,243,0.7));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: color 0.1s;
+}
+.pc-label {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-top: 4px;
+}
+.pc-sep {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  color: rgba(33,150,243,0.4);
+  padding: 0 2px;
+  padding-bottom: 20px;
+  align-self: flex-end;
+  line-height: 1.15;
+}
+
+/* CTA text */
+.popup-cta-text {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 28px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+.popup-cta-text strong {
+  color: #ffffff;
+}
+
+/* Buttons */
+.popup-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+.popup-btn-primary {
+  background: #2196f3;
+  color: #fff;
+  border: 2px solid #2196f3;
+  padding: 13px 28px;
+  border-radius: 4px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+.popup-btn-primary:hover {
+  background: #42a5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(33,150,243,0.35);
+}
+.popup-btn-ghost {
+  background: transparent;
+  color: rgba(255,255,255,0.45);
+  border: none;
+  padding: 13px 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: color 0.25s;
+}
+.popup-btn-ghost:hover {
+  color: rgba(255,255,255,0.75);
+}
+
+/* Bottom note */
+.popup-note {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.2);
+  margin-top: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .launch-popup {
+    padding: 40px 24px 36px;
+  }
+  .pc-item {
+    min-width: 64px;
+  }
+  .popup-actions {
+    flex-direction: column;
+  }
+  .popup-btn-primary {
+    width: 100%;
+    text-align: center;
+  }
+}
