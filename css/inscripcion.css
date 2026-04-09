@@ -720,6 +720,16 @@
   color: var(--gold);
 }
 
+.price-phase.strikethrough {
+  opacity: 0.6;
+}
+
+.price-phase.strikethrough .phase-label,
+.price-phase.strikethrough .phase-price {
+  text-decoration: line-through;
+  color: var(--gray);
+}
+
 /* ERROR STATES */
 .form-group.error .form-input,
 .form-group.error .form-select {
