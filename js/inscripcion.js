@@ -343,6 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
           dni: document.getElementById(`athlete${i}-dni`).value,
           birthdate: document.getElementById(`athlete${i}-birthdate`)?.value || '',
           tshirt: document.getElementById(`athlete${i}-tshirt`)?.value || '',
+          tshirtType: document.getElementById(`athlete${i}-tshirt-type`)?.value || '',
           box: document.getElementById(`athlete${i}-box`)?.value || '',
           city: document.getElementById(`athlete${i}-city`).value
         });
@@ -464,6 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
           dni: document.getElementById('athlete1-dni').value,
           birthdate: document.getElementById('athlete1-birthdate').value,
           tshirt: document.getElementById('athlete1-tshirt').value,
+          tshirtType: document.getElementById('athlete1-tshirt-type').value,
           box: document.getElementById('athlete1-box').value,
           city: document.getElementById('athlete1-city').value
         },
@@ -475,6 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
           dni: document.getElementById('athlete2-dni').value,
           birthdate: document.getElementById('athlete2-birthdate').value,
           tshirt: document.getElementById('athlete2-tshirt').value,
+          tshirtType: document.getElementById('athlete2-tshirt-type').value,
           box: document.getElementById('athlete2-box').value,
           city: document.getElementById('athlete2-city').value
         },
@@ -486,6 +489,7 @@ document.addEventListener('DOMContentLoaded', () => {
           dni: document.getElementById('athlete3-dni').value,
           birthdate: document.getElementById('athlete3-birthdate').value,
           tshirt: document.getElementById('athlete3-tshirt').value,
+          tshirtType: document.getElementById('athlete3-tshirt-type').value,
           box: document.getElementById('athlete3-box').value,
           city: document.getElementById('athlete3-city').value
         }

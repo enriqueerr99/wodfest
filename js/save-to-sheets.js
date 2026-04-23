@@ -1,6 +1,6 @@
 // Guardar datos en Google Sheets - WODFEST Salou
 
-const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxxINnWzEOdyeHdV3EF4clGtSX9FEV2r4uFIBgDBY5GgoOYkWAo6FSbua5SGxGzTGXHkA/exec';
+const WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbzc7LVqunSK8w8SjZbAiHY8pZkQFmi7hxuAZLfEvAWLZdlWupl5YX2YShJCmzGrf4P36A/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submit-btn');
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formData.append(`atleta${i}DNI`, document.getElementById(`athlete${i}-dni`)?.value || '');
         formData.append(`atleta${i}Nacimiento`, document.getElementById(`athlete${i}-birthdate`)?.value || '');
         formData.append(`atleta${i}Talla`, document.getElementById(`athlete${i}-tshirt`)?.value || '');
+        formData.append(`atleta${i}TipoCamiseta`, document.getElementById(`athlete${i}-tshirt-type`)?.value || '');
         formData.append(`atleta${i}Box`, document.getElementById(`athlete${i}-box`)?.value || '');
         formData.append(`atleta${i}Ciudad`, document.getElementById(`athlete${i}-city`)?.value || '');
       }
