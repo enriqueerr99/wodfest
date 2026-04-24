@@ -2,16 +2,16 @@
 
 // Mapeo de URLs según combinación
 const CHECKOUT_URLS = {
-  'solo-no-pack': 'https://buy.stripe.com/9B66oH0m61Ti9yh10jefC00',
-  'solo-pack': 'https://buy.stripe.com/fZu4gz3yidC06m58sLefC01',
-  'alojamiento-3-no-pack': 'https://buy.stripe.com/8x28wP5Gq1TidOxgZhefC02',
-  'alojamiento-3-pack': 'https://buy.stripe.com/6oUeVd9WG8hG8uddN5efC03',
-  'alojamiento-4-no-pack': 'https://buy.stripe.com/bJeeVdb0K9lK8udbEXefC04',
-  'alojamiento-4-pack': 'https://buy.stripe.com/4gM28r2ue55u11L38refC05',
-  'alojamiento-5-no-pack': 'https://buy.stripe.com/5kQ7sLb0K2XmdOxdN5efC06',
-  'alojamiento-5-pack': 'https://buy.stripe.com/9B64gzfh08hG39TfVdefC07',
-  'alojamiento-6-no-pack': 'https://buy.stripe.com/5kQaEX1qabtSfWF38refC08',
-  'alojamiento-6-pack': 'https://buy.stripe.com/28EbJ15Gq55u39T5gzefC09'
+  'solo-no-pack': 'https://buy.stripe.com/aFabJ1d8SgOc9yh4cvefC0c',
+  'solo-pack': 'https://buy.stripe.com/cNi14n2ueeG4aCl9wPefC0d',
+  'alojamiento-3-no-pack': 'https://buy.stripe.com/9B6eVd0m669y6m57oHefC0e',
+  'alojamiento-3-pack': 'https://buy.stripe.com/dRm6oH8SC1TifWFeR9efC0f',
+  'alojamiento-4-no-pack': 'https://buy.stripe.com/00w7sL9WGcxW8ud6kDefC0g',
+  'alojamiento-4-pack': 'https://buy.stripe.com/dRm5kD5Gq0Peh0JcJ1efC0h',
+  'alojamiento-5-no-pack': 'https://buy.stripe.com/9B614nd8S69ybGp5gzefC0i',
+  'alojamiento-5-pack': 'https://buy.stripe.com/6oUaEX7OybtScKt8sLefC0j',
+  'alojamiento-6-no-pack': 'https://buy.stripe.com/7sY00j7Oy1Ti8udgZhefC0k',
+  'alojamiento-6-pack': 'https://buy.stripe.com/dRmfZhgl42XmfWF9wPefC0l'
 };
 
 function updateCheckoutLink() {
